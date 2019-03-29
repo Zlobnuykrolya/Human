@@ -12,7 +12,7 @@ public abstract class Human {
         this.weight = weight;
         this.sex = sex;
     }
-    boolean canSpeak(Human human) {
+    boolean canTalk(Human human) {
         if (sex == true && human.sex == true) {
             return Math.random() < 0.5;
         } else {
@@ -40,8 +40,19 @@ public abstract class Human {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", sex=" + sex +
+                '}';
+    }
+
     Human canHaveRelations(Human human) {
-        if (canSpeak(human) && canEndure(human) && canSpendTimeTogether(human)) {
+        if (canTalk(human) && canEndure(human) && canSpendTimeTogether(human)) {
             if (sex != human.sex) {
                 if (sex == false) {
                     return ((Female) this).giveBirth((Male) human);
